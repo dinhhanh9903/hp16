@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chữ chạy 1/6</title>
+    <style>
+        body {
+            background: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .marquee {
+            width: 100vw;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            margin: 5px 0;
+        }
+        .marquee span {
+            display: inline-block;
+            padding-left: 100vw;
+            animation: marquee 12s linear infinite;
+            font-size: 1.5rem;
+            color: #e75480;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+        }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: red;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        for (let i = 0; i < 10; i++) {
+            const div = document.createElement('div');
+            div.className = 'marquee';
+            div.innerHTML = '<span>Chúc bạn ngày 1/6 vui vẻ, hạnh phúc và luôn mạnh khỏe❤️</span>';
+            document.body.appendChild(div);
+        }
+    </script>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html> 
